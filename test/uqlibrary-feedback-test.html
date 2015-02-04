@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=false">
+  <title>uqlibrary-booking</title>
+
+  <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <link rel="import" href="../uqlibrary-masquerade.html">
+</head>
+<body>
+
+  <uqlibrary-masquerade></uqlibrary-masquerade>
+
+  <script>
+    window.addEventListener('polymer-ready', function() {
+      var parent = document.querySelector('uqlibrary-masquerade');
+
+      test('can display my feedback page', function (done) {
+        setTimeout(function () {
+          //check page title
+          var pageTitle = parent.shadowRoot.querySelector('#toolbar-page-title').innerHTML;
+          expect(pageTitle).to.be.equal('UQ Library | My Library Masquerade');
+
+          done();
+
+        }, 6000);
+      });
+
+      test('can show masquerade form', function (done) {
+
+        setTimeout(function () {
+
+          //check title is correct
+          var pageTitle = parent.shadowRoot.querySelector('#toolbar-page-title').innerHTML;
+          expect(pageTitle).not.to.be.null;
+          expect(pageTitle).to.be.equal('Library Masquerade');
+
+          var pageContent = parent.shadowRoot.querySelector('#masqueradeCard').innerHTML;
+          expect(pageContent).not.to.be.null;
+
+
+        }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
