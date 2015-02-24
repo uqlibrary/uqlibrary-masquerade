@@ -89,7 +89,19 @@ Element providing the library main masquerade component
                   document.location.href = "https://www.library.uq.edu.au/uqlais/masquerade?" +
                   "user=" + this.user + "&" +
                   "return=" + window.btoa('https://app.library.uq.edu.au/v1/home');
-              }
+              },
+              ready: function() {
+                  var that = this;
+                  this.$.account.addEventListener('uqlibrary-api-account-loaded', function(e) {
+                      if (e.detail.hasSession) {
+                          that.user = e.detail;
+                      } else {
+                          that.$.account.login(document.location.href);
+                      }
+                  });
+                  this.$.account.get();
+                  this.showHomePage();
+              },
           });
       })();
   </script>
