@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-  <title>uqlibrary-booking</title>
+  <title>uqlibrary-mascquerade</title>
 
   <script src="../../webcomponentsjs/webcomponents.min.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
@@ -15,20 +15,30 @@
   <uqlibrary-masquerade></uqlibrary-masquerade>
 
   <script>
+
     window.addEventListener('polymer-ready', function() {
+
       var parent = document.querySelector('uqlibrary-masquerade');
 
-      test('can display my feedback page', function (done) {
-        setTimeout(function () {
-          //check page title
-          var pageTitle = parent.shadowRoot.querySelector('#toolbar-page-title').innerHTML;
-          expect(pageTitle).to.be.equal('Library masquerade');
+      describe('uqlibrary-masquerade', function () {
+        before(function () {
 
-          done();
+        });
 
-        }, 6000);
+        describe('uqlibrary-hours-list', function () {
+
+          it('should display hours', function (done) {
+            setTimeout(function () {
+              //check page title
+              var pageTitle = parent.shadowRoot.querySelector('#toolbar-page-title').innerHTML;
+              expect(pageTitle).to.be.equal('Library masquerade');
+
+              done();
+
+            }, 6000);
+          });
+        });
       });
-      
     });
   </script>
 
