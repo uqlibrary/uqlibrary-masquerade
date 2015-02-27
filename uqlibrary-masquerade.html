@@ -42,8 +42,7 @@ Element providing the library main masquerade component
       <core-header-panel main class="main">
         <core-toolbar>
           <paper-icon-button id="toolBarLeftButton" icon="menu" core-drawer-toggle></paper-icon-button>
-          <span flex id="toolbar-page-title">Library Masquerade</span>
-
+          <h1 flex id="toolbar-page-title">Library masquerade</h1>
         </core-toolbar>
 
         <div id="content">
@@ -51,7 +50,7 @@ Element providing the library main masquerade component
           <div id="cards">
               <template if="{{user.canMasquerade}}">
             <paper-shadow class="card masqueradeCard" z="1">
-              <h1 class="title">Careful...</h1>
+              <h2 class="title">Careful...</h2>
               <p>You will effectively become the user you enter here, and changes you make will apply to his or her account!</p>
 
                 <div id="masquerade">
@@ -67,11 +66,11 @@ Element providing the library main masquerade component
             </paper-shadow>
               </template>
 
-              <template if="{{!user.canMasquerade}}">
-                  <paper-shadow class="card masqueradeCard" z="1">
-                      <p>According to our records, you don't have the ability to use masquerade.</p>
-                  </paper-shadow>
-                  </template>
+          <template if="{{!user.canMasquerade}}">
+              <paper-shadow class="card masqueradeCard" z="1">
+                  <p>According to our records, you don't have the ability to use masquerade.</p>
+              </paper-shadow>
+          </template>
 
           </div>
 
@@ -99,9 +98,9 @@ Element providing the library main masquerade component
                           that.$.account.login(document.location.href);
                       }
                   });
+
                   this.$.account.get();
-                  this.showHomePage();
-              },
+              }
           });
       })();
   </script>
