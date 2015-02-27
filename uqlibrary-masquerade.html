@@ -96,11 +96,12 @@ Element providing the library main masquerade component
                     if (e.detail.hasSession) {
                         that.user = e.detail;
                     } else {
-                        that.$.account.login(document.location.href);
+                      alert("hi!");
+
+                      that.$.account.login(document.location.href);
                     }
                 });
 
-                alert("hi!");
                 this.$.account.get();
               }
           });
