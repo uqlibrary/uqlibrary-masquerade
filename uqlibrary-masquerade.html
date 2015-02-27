@@ -85,8 +85,9 @@ Element providing the library main masquerade component
     Polymer('uqlibrary-masquerade', {
       go: function (e) {
         document.location.href = "https://www.library.uq.edu.au/uqlais/masquerade?" +
-        "user=" + this.user + "&" +
-        "return=" + window.btoa(window.location.href);
+        "user=" + this.user;
+//        + "&" +
+//        "return=" + window.btoa(window.location.href);
       },
 
       ready: function() {
