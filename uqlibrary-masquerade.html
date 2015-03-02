@@ -54,8 +54,8 @@ Element providing the library main masquerade component
               <p>You will effectively become the user you enter here, and changes you make will apply to his or her account!</p>
 
                 <div id="masquerade">
-                    <paper-input-decorator label="Username or student number">
-                      <input is="core-input" value="{{newUserName}}">
+                    <paper-input-decorator id="newUserNameDecorator" label="Username or student number">
+                      <input is="core-input" id="newUserNameInput" value="{{newUserName}}">
                     </paper-input-decorator>
                 </div>
                 <div horizontal layout end-justified id="masqueradeButton">
@@ -83,12 +83,20 @@ Element providing the library main masquerade component
 
   <script>
     Polymer('uqlibrary-masquerade', {
-      go: function (e) {
 
+      getMasqueradeUrl : function(returnUrl) {
         var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
-                "user=" + this.newUserName + "&" + "return=" + window.btoa(window.location.href);
+          "user=" + this.newUserName;
 
-        document.location.href = url;
+        if (returnUrl) {
+          url = url + "&return=" + window.btoa(returnUrl);
+        }
+
+        return url;
+      },
+
+      go: function (e) {
+        document.location.href = this.getMasqueradeUrl(window.location.href);
       },
 
       ready: function() {
