@@ -84,10 +84,11 @@ Element providing the library main masquerade component
   <script>
     Polymer('uqlibrary-masquerade', {
       go: function (e) {
-        document.location.href = "https://www.library.uq.edu.au/uqlais/masquerade?" +
-        "user=" + this.user;
-//        + "&" +
-//        "return=" + window.btoa(window.location.href);
+
+        var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
+                "user=" + this.user + "&" + "return=" + window.btoa(window.location.href);
+
+        document.location.href = url;
       },
 
       ready: function() {
@@ -96,7 +97,6 @@ Element providing the library main masquerade component
             if (e.detail.hasSession) {
                 that.user = e.detail;
             } else {
-              alert("hi!");
               that.$.account.login(document.location.href);
             }
         });
