@@ -55,7 +55,7 @@ Element providing the library main masquerade component
 
                 <div id="masquerade">
                     <paper-input-decorator label="Username or student number">
-                        <input is="core-input">
+                      <input is="core-input" value="{{newUserName}}">
                     </paper-input-decorator>
                 </div>
                 <div horizontal layout end-justified id="masqueradeButton">
@@ -86,7 +86,7 @@ Element providing the library main masquerade component
       go: function (e) {
 
         var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
-                "user=" + this.user + "&" + "return=" + window.btoa(window.location.href);
+                "user=" + this.newUserName + "&" + "return=" + window.btoa(window.location.href);
 
         document.location.href = url;
       },
