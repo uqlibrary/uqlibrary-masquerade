@@ -51,7 +51,7 @@ Element providing the library main masquerade component
 
           <div id="cards">
               <template if="{{user.canMasquerade}}">
-            <paper-shadow class="card masqueradeCard" z="1">
+            <paper-shadow class="responsiveCard" z="1">
               <h2 class="title">Careful...</h2>
               <p>You will effectively become the user you enter here, and changes you make will apply to his or her account!</p>
 
@@ -69,7 +69,7 @@ Element providing the library main masquerade component
               </template>
 
           <template if="{{!user.canMasquerade}}">
-              <paper-shadow class="card masqueradeCard" z="1">
+              <paper-shadow class="responsiveCard" z="1">
                   <p>According to our records, you don't have the ability to use masquerade.</p>
               </paper-shadow>
           </template>
