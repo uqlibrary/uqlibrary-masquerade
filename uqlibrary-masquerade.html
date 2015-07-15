@@ -28,10 +28,9 @@ Element providing the library main masquerade component
 <link rel="import" href="../uqlibrary-elements/0.5.4/lib/vulcanized.html">
 
 
-
 <polymer-element name="uqlibrary-masquerade" layout center attributes="masquerade">
   <template>
-      <link rel="stylesheet" href="../uqlibrary-elements/resources/theme/element.css">
+    <link rel="stylesheet" href="../uqlibrary-elements/resources/theme/element.css">
     <uqlibrary-ga id="ga" appName="masquerade"></uqlibrary-ga>
     <uqlibrary-api-account id="account"></uqlibrary-api-account>
     <core-drawer-panel id="drawerPanel" class="drawer" drawerWidth="256px" responsiveWidth="768px">
@@ -48,39 +47,32 @@ Element providing the library main masquerade component
         </core-toolbar>
 
         <div id="content">
-
-          <div id="cards">
+          <paper-shadow class="card" z="1">
+            <div class="cardSection noBorder">
               <template if="{{user.canMasquerade}}">
-            <paper-shadow class="responsiveCard" z="1">
-              <h2 class="title">Careful...</h2>
-              <p>You will effectively become the user you enter here, and changes you make will apply to his or her account!</p>
-
-                <div id="masquerade">
-                    <paper-input-decorator id="newUserNameDecorator" label="Username or student number">
-                      <input is="core-input" id="newUserNameInput" value="{{newUserName}}">
-                    </paper-input-decorator>
-                </div>
-                <div horizontal layout end-justified id="masqueradeButton">
-                    <core-tooltip noarrow id="masqueradeTooltip" class="fancy" position="bottom" label="Are you completely sure you want to do this?">
+              <div class="subhead cardTitle">Careful...</div>
+              <p>You will effectively become the user you enter here, and changes you make will apply to his or her
+                account!</p>
+              <div id="masquerade">
+                <paper-input-decorator id="newUserNameDecorator" label="Username or student number">
+                  <input is="core-input" id="newUserNameInput" value="{{newUserName}}">
+                </paper-input-decorator>
+              </div>
+              <div horizontal layout end-justified id="masqueradeButton">
+                  <core-tooltip noarrow id="masqueradeTooltip" class="fancy" position="bottom"
+                                label="Are you completely sure you want to do this?">
                     <paper-button affirmative class="colored" on-tap="{{go}}">Masquerade as this user</paper-button>
-                        </core-tooltip>
+                  </core-tooltip>
                 </div>
-            </paper-shadow>
-              </template>
-
-          <template if="{{!user.canMasquerade}}">
-              <paper-shadow class="responsiveCard" z="1">
-                  <p>According to our records, you don't have the ability to use masquerade.</p>
-              </paper-shadow>
+            </template>
+              <template if="{{!user.canMasquerade}}">
+              <p>According to our records, you don't have the ability to use masquerade.</p>
           </template>
-
-          </div>
-
+            </div>
+          </paper-shadow>
         </div>
       </core-header-panel>
-
     </core-drawer-panel>
-
   </template>
 
   <script>
@@ -90,15 +82,15 @@ Element providing the library main masquerade component
 
       keyboardNavigationKeys: 'space enter',
 
-      a11yKeyPressed: function(source, event) {
+      a11yKeyPressed: function (source, event) {
         if (source.path && source.path.length > 0 && source.path[0].target) {
           source.path[0].target.fire("tap");
         }
       },
 
-      getMasqueradeUrl : function(returnUrl) {
+      getMasqueradeUrl: function (returnUrl) {
         var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
-          "user=" + this.newUserName;
+                "user=" + this.newUserName;
 
         if (returnUrl) {
           url = url + "&return=" + window.btoa(returnUrl);
@@ -111,14 +103,14 @@ Element providing the library main masquerade component
         document.location.href = this.getMasqueradeUrl(window.location.href);
       },
 
-      ready: function() {
+      ready: function () {
         var that = this;
-        this.$.account.addEventListener('uqlibrary-api-account-loaded', function(e) {
-            if (e.detail.hasSession) {
-                that.user = e.detail;
-            } else {
-              that.$.account.login(document.location.href);
-            }
+        this.$.account.addEventListener('uqlibrary-api-account-loaded', function (e) {
+          if (e.detail.hasSession) {
+            that.user = e.detail;
+          } else {
+            that.$.account.login(document.location.href);
+          }
         });
 
         this.$.account.get();
