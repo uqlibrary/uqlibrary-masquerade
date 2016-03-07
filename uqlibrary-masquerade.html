@@ -34,20 +34,23 @@ Element providing the library main masquerade component
     <uqlibrary-ga id="ga" appName="masquerade"></uqlibrary-ga>
     <uqlibrary-api-account id="account"></uqlibrary-api-account>
     <core-drawer-panel id="drawerPanel" class="drawer" drawerWidth="256px" responsiveWidth="768px">
-      <core-header-panel drawer>
-        <uqlibrary-menu account="{{user}}"></uqlibrary-menu>
-      </core-header-panel>
 
-      <core-header-panel main class="main">
-        <core-toolbar>
+      <div drawer class="left-drawer" fit style="overflow: scroll;">
+        <uqlibrary-menu id="uqlibraryMenu" account="{{user}}"></uqlibrary-menu>
+      </div>
+
+      <div main layout vertical class="main">
+
+      <core-toolbar>
           <core-a11y-keys id="a11yToolBarLeftButton" target="{{$.toolBarLeftButton}}" keys="{{keyboardNavigationKeys}}"
                           on-keys-pressed="{{ a11yKeyPressed }}"></core-a11y-keys>
           <paper-icon-button id="toolBarLeftButton" icon="menu" core-drawer-toggle></paper-icon-button>
           <h1 flex id="toolbar-page-title">Library masquerade</h1>
         </core-toolbar>
 
-        <div id="content">
-          <paper-shadow class="card" z="1">
+        <div main layout vertical fit relative style="margin-top: 64px;">
+          <div id="content" fit style="overflow: scroll;">
+            <paper-shadow class="card" z="1">
             <div class="cardSection noBorder">
               <template if="{{user.canMasquerade}}">
               <div class="subhead cardTitle">Careful...</div>
@@ -70,8 +73,10 @@ Element providing the library main masquerade component
           </template>
             </div>
           </paper-shadow>
+          </div>
         </div>
-      </core-header-panel>
+
+      </div>
     </core-drawer-panel>
   </template>
 
