@@ -1,68 +1,47 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-  <title>uqlibrary-mascquerade</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>uqlibrary-element</title>
 
-  <script src="../../webcomponentsjs/webcomponents.min.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+  <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+  <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
 
-  <link rel="import" href="../uqlibrary-masquerade.html">
+  <!-- Import the element to test -->
+  <link rel="import" href="../elements/uqlibrary-masquerade.html">
+
 </head>
 <body>
 
-  <uqlibrary-masquerade></uqlibrary-masquerade>
+<test-fixture id="element">
+  <template>
+    <uqlibrary-masquerade stand-alone="true"></uqlibrary-masquerade>
+  </template>
+</test-fixture>
 
-  <script>
+<script>
+  (function () {
+    document.cookie="UQLMockData=enabled";
+    document.cookie="UQLMockData-PType=17";
+  })();
 
-    window.addEventListener('polymer-ready', function() {
+  suite('<uqlibrary-masquerade> tests', function () {
+    var element;
 
-      var parent = document.querySelector('uqlibrary-masquerade');
-
-      //send keboard event toit'
-      function dispatchInputEvent(target) {
-        var e = new Event('input', {
-          bubbles: true
-        });
-        target.dispatchEvent(e);
-      };
-
-      describe('uqlibrary-masquerade', function () {
-        before(function () {
-
-        });
-
-        describe('uqlibrary-hours-list', function () {
-
-          it('should display masquerade title', function (done) {
-            setTimeout(function () {
-              //check page title
-              var pageTitle = parent.shadowRoot.querySelector('#toolbar-page-title').innerHTML;
-              expect(pageTitle).to.be.equal('Library masquerade');
-
-              done();
-
-            }, 1000);
-          });
-
-          it('should set masquerading user id', function (done) {
-            setTimeout(function () {
-              var newUserNameInput = parent.shadowRoot.querySelector('#newUserNameInput');
-              newUserNameInput.value = "s123123123";
-              dispatchInputEvent(newUserNameInput);
-
-              setTimeout(function () {
-                expect(parent.getMasqueradeUrl()).to.be.equal('https://www.library.uq.edu.au/uqlais/masquerade?user=s123123123');
-                done();
-              }, 2000);
-            }, 1000);
-          });
-
-        });
-      });
+    setup(function () {
+      element = fixture('element');
     });
-  </script>
+
+    test('It should show the masquerade interface', function(done) {
+      setTimeout(function () {
+        expect(document.querySelector('.title-text').textContent).to.be.equal("Masquerade as user");
+        done();
+      }, 500);
+    });
+  });
+</script>
 
 </body>
 </html>
