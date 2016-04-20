@@ -63,10 +63,17 @@
      * @private
      */
     _masquerade: function () {
-      var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
-        "user=" + this._masqueradeValue;
+			
+			//first character has to be a string (student number is valid, but can't get get all data, so use user id)
+			debugger;
+			if (!parseInt(this._masqueradeValue[0])) {
+				var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
+						"user=" + this._masqueradeValue;
 
-      window.location.href = url;
+				window.location.href = url;	
+			} else {
+				
+			}
     },
 		/**
 		 * Toggles the drawer panel of the main UQL app
