@@ -62,13 +62,13 @@ Example:
 
         <!-- Content -->
         <div class="container">
-            <paper-card heading="Masquerade as user">
+            <paper-card heading="[[headerTitle]]">
               <div class="card-content">
                 <!-- If can masquerade -->
                 <template is="dom-if" if="[[_account.canMasquerade]]">
 
                   <p class="body1">
-                    <span class="subhead">Careful...</span>You will effectively become the user you enter here,
+                    <span class="subhead">Careful... Masquerading as a user</span> you will effectively become the user you enter here,
                     and changes you make will apply to his or her account!
                   </p>
 
