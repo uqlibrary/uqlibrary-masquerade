@@ -65,7 +65,6 @@
     _masquerade: function () {
 			
 			//first character has to be a string (student number is valid, but can't get get all data, so use user id)
-			debugger;
 			if (!parseInt(this._masqueradeValue[0])) {
 				var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
 						"user=" + this._masqueradeValue;
