@@ -25,24 +25,24 @@
 			 */
 			headerTitle: {
 				type: String,
-				value: 'Library masquerade'
+				value: 'Masquerade'
 			},
-      /**
-       * The entered value
-       */
-      _masqueradeValue: {
-        type: String,
-        value: ''
-      },
-      /**
-       * Holds the user object
-       */
-      _account: {
-        type: Object,
-        value: {
-          hasSession: false
-        }
-      }
+		  	/**
+			 * The entered value
+		   	 */
+			_masqueradeValue: {
+				type: String,
+				value: ''
+		  	},
+		  	/**
+		   	 * Holds the user object
+		   	 */
+		  	_account: {
+				type: Object,
+				value: {
+			  		hasSession: false
+				}
+      		}
 		},
 		ready: function () {
 			var self = this;
