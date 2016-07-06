@@ -52,7 +52,7 @@
 				} else {
 					self.$.accountApi.login(document.location.href);
 				}
-        console.log(e.detail);
+
         self.fire("uqlibrary-masquerade-loaded");
 			});
 
