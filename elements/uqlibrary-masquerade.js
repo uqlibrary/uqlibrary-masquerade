@@ -52,7 +52,7 @@
 				} else {
 					self.$.accountApi.login(document.location.href);
 				}
-        
+        console.log(e.detail);
         self.fire("uqlibrary-masquerade-loaded");
 			});
 
@@ -66,12 +66,11 @@
 			
 			//first character has to be a string (student number is valid, but can't get get all data, so use user id)
 			if (!parseInt(this._masqueradeValue[0])) {
-				var url = "https://www.library.uq.edu.au/uqlais/masquerade?" +
-						"user=" + this._masqueradeValue + "&return=" + window.btoa(window.location.href);
+				var url = 'https://www.library.uq.edu.au/uqlais/masquerade?' +
+						'user=' + this._masqueradeValue + '&return=' + window.btoa(window.location.href);
 
-				window.location.href = url;	
-			} else {
-				
+				document.cookie = 'UQLMasquerade=' + this._masqueradeValue;
+				window.location.href = url;
 			}
     },
 		/**
