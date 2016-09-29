@@ -69,7 +69,7 @@
 				var url = 'https://auth.library.uq.edu.au/masquerade?' +
 						'user=' + this._masqueradeValue + '&return=' + window.btoa(window.location.href);
 
-				document.cookie = 'UQLMasquerade=' + this._masqueradeValue;
+				document.cookie = 'UQLMasquerade=' + this._masqueradeValue + ";domain=.library.uq.edu.au;path=/";
 				window.location.href = url;
 			}
     },
