@@ -66,10 +66,10 @@
 			
 			//first character has to be a string (student number is valid, but can't get get all data, so use user id)
 			if (!parseInt(this._masqueradeValue[0])) {
-				var url = 'https://www.library.uq.edu.au/uqlais/masquerade?' +
+				var url = 'https://auth.library.uq.edu.au/masquerade?' +
 						'user=' + this._masqueradeValue + '&return=' + window.btoa(window.location.href);
 
-				document.cookie = 'UQLMasquerade=' + this._masqueradeValue;
+				document.cookie = 'UQLMasquerade=' + this._masqueradeValue + ";domain=.library.uq.edu.au;path=/";
 				window.location.href = url;
 			}
     },
