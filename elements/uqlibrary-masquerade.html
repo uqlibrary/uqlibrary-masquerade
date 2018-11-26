@@ -11,41 +11,41 @@ Example:
 @demo demo/index.html Demo of the Full view
 -->
 <dom-module id="uqlibrary-masquerade">
-  <!-- All element styles -->
-  <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
-    :host {
-      @apply(--uql-app-host);
-    }
-
-    .container {
-      padding: 16px;
-      @apply(--layout-horizontal);
-      @apply(--layout-center-justified);
-    }
-
-    .card-actions {
-      @apply(--layout-horizontal);
-      @apply(--layout-around-justified);
-    }
-
-    paper-card {
-      max-width: 800px;
-      width: 100%;
-    }
-
-    .card-actions {
-      @apply(--layout-horizontal);
-      @apply(--layout-end-justified);
-      border: 0;
-    }
-
-    .body1 {
-      color: var(--secondary-color);
-    }
-  </style>
-
   <!-- Template -->
   <template>
+    <!-- All element styles -->
+    <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
+      :host {
+        @apply(--uql-app-host);
+      }
+
+      .container {
+        padding: 16px;
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+      }
+
+      .card-actions {
+        @apply(--layout-horizontal);
+        @apply(--layout-around-justified);
+      }
+
+      paper-card {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .card-actions {
+        @apply(--layout-horizontal);
+        @apply(--layout-end-justified);
+        border: 0;
+      }
+
+      .body1 {
+        color: var(--secondary-color);
+      }
+    </style>
+
     <uqlibrary-api-account id="accountApi"></uqlibrary-api-account>
 
     <div class="fit layout vertical">
