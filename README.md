@@ -1,24 +1,30 @@
-#uqlibrary-masquerade 
+# uqlibrary-masquerade
 
 [![Dependency Status](https://david-dm.org/uqlibrary/uqlibrary-masquerade.svg)](https://david-dm.org/uqlibrary/uqlibrary-masquerade)
 [![Dev Dependency Status](https://david-dm.org/uqlibrary/uqlibrary-masquerade/dev-status.svg)](https://david-dm.org/uqlibrary/uqlibrary-masquerade?type=dev)
 
-##Polymer v1.0
+* Full application is [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/).
+* Full documentation can be found [here](https://uqlibrary.github.io/uqlibrary-masquerade/uqlibrary-masquerade/).
+* Demo is [here](https://uqlibrary.github.io/uqlibrary-masquerade/uqlibrary-masquerade/demo/).
 
-Current working branch is https://github.com/uqlibrary/uqlibrary-masquerade/tree/polymer1.0
+## Getting Started
 
-Full application is [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/)
+```sh
+npm install -g web-component-tester bower
+npm install
+bower install
+```
 
+## Developing
 
-##DEPRECATED BRANCHES: uqlibrary-masquerade - master/uat/staging/production
+* Please adhere to the Polymer code style guide provided at [Style Guide](http://polymerelements.github.io/style-guide/).
+* Colors and common styles are imported (bower install) from [uqlibrary-styles](http://github.com/uqlibrary/uqlibrary-styles).
+* GitHub pages should be updated after every commit to `polymer1.0` branch by running `bin/generate-gh-pages.sh`
 
-This application used to be a part of a set of MyLibrary applications implemented with Google Polymer v0.5 at app.library.uq.edu.au/v1/masquerade.
+## Testing
 
-Production branch deployment is currently just a redirect to live MyLibrary. To be removed after a reasonable time.
+Tests are run using Web Component Tester.
 
-
-
-
-
-
- 
+```sh
+npm test
+```
