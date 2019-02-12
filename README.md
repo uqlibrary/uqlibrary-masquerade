@@ -10,7 +10,7 @@
 ## Getting Started
 
 ```sh
-npm install -g web-component-tester bower
+npm install -g web-component-tester bower polymer-cli
 npm install
 bower install
 ```
