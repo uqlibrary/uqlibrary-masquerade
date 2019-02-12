@@ -4,11 +4,10 @@
 Element providing the library main masquerade component
 
 Example:
+
     <uqlibrary-masquerade></uqlibrary-masquerade>
 
 @demo
-
-@demo demo/index.html Demo of the Full view
 -->
 <dom-module id="uqlibrary-masquerade">
   <!-- Template -->
@@ -16,18 +15,18 @@ Example:
     <!-- All element styles -->
     <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
       :host {
-        @apply(--uql-app-host);
+        @apply --uql-app-host;
       }
 
       .container {
         padding: 16px;
-        @apply(--layout-horizontal);
-        @apply(--layout-center-justified);
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
       }
 
       .card-actions {
-        @apply(--layout-horizontal);
-        @apply(--layout-around-justified);
+        @apply --layout-horizontal;
+        @apply --layout-around-justified;
       }
 
       paper-card {
@@ -36,8 +35,8 @@ Example:
       }
 
       .card-actions {
-        @apply(--layout-horizontal);
-        @apply(--layout-end-justified);
+        @apply --layout-horizontal;
+        @apply --layout-end-justified;
         border: 0;
       }
 
