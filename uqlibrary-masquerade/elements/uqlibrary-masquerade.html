@@ -1,0 +1,107 @@
+<link rel="import" href="elements.html">
+
+<!--
+Element providing the library main masquerade component
+
+Example:
+
+    <uqlibrary-masquerade></uqlibrary-masquerade>
+
+@demo
+-->
+<dom-module id="uqlibrary-masquerade">
+  <!-- Template -->
+  <template>
+    <!-- All element styles -->
+    <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
+      :host {
+        @apply --uql-app-host;
+      }
+
+      .container {
+        padding: 16px;
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+      }
+
+      .card-actions {
+        @apply --layout-horizontal;
+        @apply --layout-around-justified;
+      }
+
+      paper-card {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .card-actions {
+        @apply --layout-horizontal;
+        @apply --layout-end-justified;
+        border: 0;
+      }
+
+      .body1 {
+        color: var(--secondary-color);
+      }
+    </style>
+
+    <uqlibrary-api-account id="accountApi"></uqlibrary-api-account>
+
+    <div class="fit layout vertical">
+      <paper-header-panel class="flex">
+        <!-- Header -->
+        <paper-toolbar>
+          <!-- Required -->
+          <template is="dom-if" if="[[!standAlone]]">
+            <paper-icon-button icon="menu" on-tap="_toggleDrawerPanel" paper-drawer-toggle title="open menu button" aria-label="open menu button"></paper-icon-button>
+          </template>
+
+          <div class="title uqlibrary-app-title" title="[[headerTitle]]">[[headerTitle]]</div>
+        </paper-toolbar>
+
+        <!-- Content -->
+        <div class="container">
+            <paper-card heading="[[headerTitle]]">
+              <div class="card-content">
+                <!-- If can masquerade -->
+                <template is="dom-if" if="[[_account.canMasquerade]]">
+
+                  <p class="body1">
+                    <span class="subhead">Careful... Masquerading as a user</span> you will effectively become the user you enter here,
+                    and changes you make will apply to his or her account!
+                  </p>
+
+                  <paper-input id="username" label="Username or student user name" value="{{_masqueradeValue}}"></paper-input>
+
+                </template>
+
+                <!-- If cannot masquerade -->
+                <template is="dom-if" if="[[!_account.canMasquerade]]">
+                  <p>According to our records, you don't have the ability to use masquerade.</p>
+                </template>
+              </div>
+
+              <template is="dom-if" if="[[_account.canMasquerade]]">
+                <div class="card-actions">
+                  <paper-button class="button-colored-accent"
+                                title="Masquerade as this user"
+                                aria-label="Masquerade as this user"
+                                on-tap="_masquerade">
+                    Masquerade as this user
+                  </paper-button>
+                </div>
+              </template>
+
+
+              <!-- Top up buttons -->
+            </paper-card>
+        </div>
+
+      </paper-header-panel>
+    </div>
+
+  </template>
+
+  <!-- Location of the script -->
+  <script src="uqlibrary-masquerade.js"></script>
+</dom-module>
